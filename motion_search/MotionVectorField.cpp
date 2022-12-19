@@ -6,6 +6,7 @@
  */
 
 #include "MotionVectorField.h"
+#include <cstring>
 
 #include "motion_search.h"
 

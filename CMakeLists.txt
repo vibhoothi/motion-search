@@ -35,12 +35,12 @@ target_clangformat_setup(motion_search_lib)
 # Create library : libmotion_search_lib_sse2
 #
 
-set(SOURCES_SSE2
-    "motion_search/asm/moments.x86.sse2.c")
-set_source_files_properties(${SOURCES_SSE2}
-    COMPILE_FLAGS "-msse2")
-add_library(motion_search_lib_sse2 ${SOURCES_SSE2})
-target_clangformat_setup(motion_search_lib_sse2)
+#set(SOURCES_SSE2
+#    "motion_search/asm/moments.x86.sse2.c")
+#set_source_files_properties(${SOURCES_SSE2}
+#    COMPILE_FLAGS "-msse2")
+#add_library(motion_search_lib_sse2 ${SOURCES_SSE2})
+#target_clangformat_setup(motion_search_lib_sse2)
 
 #
 # create binary
@@ -53,8 +53,7 @@ target_clangformat_setup(motion_search)
 
 
 target_link_libraries (motion_search LINK_PUBLIC
-    motion_search_lib
-    motion_search_lib_sse2)
+    motion_search_lib)
 
 set_target_properties(motion_search_lib PROPERTIES PUBLIC_HEADER motion_search/motion_search.h)
 
@@ -62,10 +61,10 @@ target_include_directories(motion_search_lib PRIVATE
   ${CMAKE_SOURCE_DIR}
   ${CMAKE_SOURCE_DIR}/motion_search
 )
-target_include_directories(motion_search_lib_sse2 PRIVATE
-  ${CMAKE_SOURCE_DIR}
-  ${CMAKE_SOURCE_DIR}/motion_search
-)
+#target_include_directories(motion_search_lib_sse2 PRIVATE
+#  ${CMAKE_SOURCE_DIR}
+#  ${CMAKE_SOURCE_DIR}/motion_search
+#)
 target_include_directories(motion_search PRIVATE
   ${CMAKE_SOURCE_DIR}
   ${CMAKE_SOURCE_DIR}/motion_search
@@ -91,8 +90,8 @@ ADD_CUSTOM_TARGET(release
 install(TARGETS motion_search_lib
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(TARGETS motion_search_lib_sse2
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+#install(TARGETS motion_search_lib_sse2
+#    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 install(FILES ${CMAKE_BINARY_DIR}/motion_search.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)

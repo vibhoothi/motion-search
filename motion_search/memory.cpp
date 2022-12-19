@@ -13,6 +13,7 @@
 #else
 #include <cstdlib>
 #endif
+#include <cstring>
 
 enum { ALIGN = 64 };
 
